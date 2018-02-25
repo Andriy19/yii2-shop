@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Category;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -9,8 +10,9 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\controllers\CustomController;
 
-class SiteController extends Controller
+class SiteController extends CustomController
 {
     /**
      * {@inheritdoc}
@@ -61,7 +63,9 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        //витягуємо все з таблиці
+        $model = Category::find()->all();
+        return $this->render('index', compact( 'model'));
     }
 
     /**
@@ -84,6 +88,43 @@ class SiteController extends Controller
         return $this->render('login', [
             'model' => $model,
         ]);
+    }
+    public function actionRegistration()
+    {
+        $this->setMeta('123');
+
+        $registration = new User();
+
+        $registration->scenario = 'registration';
+
+        if($registration->load(Yii::$app->request->post()))
+        {
+            $this->Password = $registration->password;
+
+            $registration->password = Yii::$app->security->generatePasswordHash($registration->password);
+            $registration->code = Yii::$app->getSecurity()->generateRandomString(10);
+
+            //CustomController::printr($registration);
+            //exit;
+
+
+            if($registration->save())
+            {
+                Yii::$app->session->setFlash('success', 'Вам  отправлена ссылка с потверждением вашего Email');
+                return $this->goHome();
+            }
+            else
+            {
+
+
+
+                $registration->password = $this->Password;
+                return $this->render('reglog', compact('registration'));
+            }
+        }
+
+        return $this->render('reglog', compact('registration'));
+
     }
 
     /**

@@ -4,30 +4,51 @@ namespace app\models;
 
 class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
 {
-    public $id;
-    public $username;
-    public $password;
+//    public $id;
+//    public $username;
+//    public $password;
     public $authKey;
     public $accessToken;
 
-    private static $users = [
-        '100' => [
-            'id' => '100',
-            'username' => 'admin',
-            'password' => 'admin',
-            'authKey' => 'test100key',
-            'accessToken' => '100-token',
-        ],
-        '101' => [
-            'id' => '101',
-            'username' => 'demo',
-            'password' => 'demo',
-            'authKey' => 'test101key',
-            'accessToken' => '101-token',
-        ],
-    ];
+    public static function tableName()
+    {
+        return 'user';
+    }
 
+//    private static $users = [
+//        '100' => [
+//            'id' => '100',
+//            'username' => 'admin',
+//            'password' => 'admin',
+//            'authKey' => 'test100key',
+//            'accessToken' => '100-token',
+//        ],
+//        '101' => [
+//            'id' => '101',
+//            'username' => 'demo',
+//            'password' => 'demo',
+//            'authKey' => 'test101key',
+//            'accessToken' => '101-token',
+//        ],
+//    ];
 
+    public function rules()
+    {
+        return [
+            [['email', 'password'], 'required', 'on' => 'registration'],
+            [['active', 'is_email'], 'integer'],
+            [['email', 'password', 'username','auth_key', 'code'], 'string', 'max' => 255],
+            [[ 'username','sauth_key', 'code','active', 'is_email'], 'safe', 'on' => 'registration']
+        ];
+    }
+    public function attributeLabels()
+    {
+        return [
+            'email' => 'Email',
+            'password' => 'Пароль',
+            'username' => 'Ваше Имя',
+        ];
+    }
     /**
      * {@inheritdoc}
      */

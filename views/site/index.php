@@ -1,3 +1,13 @@
+<?php
+    echo '<pre>';
+    print_r($model);
+    echo '</pre>';
+    exit;
+?>
+
+
+
+
 <div class="slider-area">
     <!-- Slider -->
     <div class="block-slider block-slider4">
