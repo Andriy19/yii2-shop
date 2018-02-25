@@ -11,6 +11,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use yii\helpers\Url;
 
 AppAsset::register($this);
 ?>
@@ -24,7 +25,7 @@ AppAsset::register($this);
 -->
 <html lang="<?= Yii::$app->language ?>">
 <head>
-    <meta charset="utf-8">
+    <meta charset="<?= Yii::$app->charset ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
@@ -54,10 +55,7 @@ AppAsset::register($this);
             <div class="col-md-8">
                 <div class="user-menu">
                     <ul>
-                        <li><a href="#"><i class="fa fa-user"></i> My Account</a></li>
-                        <li><a href="#"><i class="fa fa-heart"></i> Wishlist</a></li>
-                        <li><a href="cart.html"><i class="fa fa-user"></i> My Cart</a></li>
-                        <li><a href="checkout.html"><i class="fa fa-user"></i> Checkout</a></li>
+                        <li><a href="<?=  Url::to(['/site/registration']) ?>"><i class="fa fa-user"></i>Registration</a></li>
                         <li><a href="#"><i class="fa fa-user"></i> Login</a></li>
                     </ul>
                 </div>
@@ -122,7 +120,7 @@ AppAsset::register($this);
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="index.html">Home</a></li>
-                    <li><a href="shop.html">Shop page</a></li>
+                    <li><a href="shop.php">Shop page</a></li>
                     <li><a href="single-product.html">Single product</a></li>
                     <li><a href="cart.html">Cart</a></li>
                     <li><a href="#">Category</a></li>

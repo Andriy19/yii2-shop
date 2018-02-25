@@ -11,11 +11,11 @@ use yii\web\Controller;
 
 class CustomController extends Controller
 {
-    protected  function setMeta ($title = null, $description = null,$keywords = null)
+    protected function setMeta ($title = null, $description = null, $keywords = null)
     {
-        $this->view->title = $this;
-        $this->view->title =registerMetaTag(['name' =>'keywords', 'content' => $keywords]);
-        $this->view->title =registerMetaTag(['name' =>'description', 'content' => $description]);
+        $this->view->title = $title;
+        $this->view->registerMetaTag(['name' => 'keywords', 'content' => $keywords]);
+        $this->view->registerMetaTag(['name' => 'description', 'content' => $description]);
     }
 
     public static function printr($value)

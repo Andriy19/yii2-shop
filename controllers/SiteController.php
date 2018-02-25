@@ -39,7 +39,7 @@ class SiteController extends CustomController
             ],
         ];
     }
-
+    public $Password;
     /**
      * {@inheritdoc}
      */
