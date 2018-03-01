@@ -6,9 +6,9 @@ use yii\web\IdentityInterface;
 
 class User extends ActiveRecord implements IdentityInterface
 {
-//    public $id;
-//    public $username;
-//    public $password;
+    /*public $id;
+    public $username;
+    public $_password;*/
     public $authKey;
     public $accessToken;
 
@@ -43,16 +43,20 @@ class User extends ActiveRecord implements IdentityInterface
             [[ 'username','sauth_key', 'code','active', 'is_email'], 'safe', 'on' => 'registration']
         ];
     }
+
+
     public function attributeLabels()
     {
         return [
             'email' => 'Email',
             'password' => 'Пароль',
-            'username' => 'Ваше Iмя',
+            'username' => 'Ваше Имя',
         ];
     }
+
+
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public static function findIdentity($id)
     {
@@ -60,7 +64,7 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public static function findIdentityByAccessToken($token, $type = null)
     {
@@ -91,7 +95,7 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function getId()
     {
@@ -99,7 +103,7 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function getAuthKey()
     {
@@ -107,7 +111,7 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function validateAuthKey($authKey)
     {
@@ -124,4 +128,7 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return $this->password === $password;
     }
+
+
+
 }

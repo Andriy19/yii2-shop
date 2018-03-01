@@ -56,7 +56,7 @@ AppAsset::register($this);
                 <div class="user-menu">
                     <ul>
                         <li><a href="<?=  Url::to(['/site/registration']) ?>"><i class="fa fa-user"></i>Registration</a></li>
-                        <li><a href="#"><i class="fa fa-user"></i> Login</a></li>
+                        <li><a href="<?=  Url::to(['/site/login']) ?>"><i class="fa fa-user"></i> Login</a></li>
                     </ul>
                 </div>
             </div>

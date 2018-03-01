@@ -3,6 +3,8 @@
 namespace app\controllers;
 
 use app\models\Category;
+
+use app\models\User;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -12,10 +14,11 @@ use app\models\LoginForm;
 use app\models\ContactForm;
 use app\controllers\CustomController;
 
+
 class SiteController extends CustomController
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function behaviors()
     {
@@ -39,9 +42,11 @@ class SiteController extends CustomController
             ],
         ];
     }
+
     public $Password;
+
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function actions()
     {
@@ -63,10 +68,24 @@ class SiteController extends CustomController
      */
     public function actionIndex()
     {
-        //витягуємо все з таблиці
-        $model = Category::find()->all();
-        return $this->render('index', compact( 'model'));
+        // вытащить все
+        ///$model = Category::find()->all();
+
+        // вытаскиваем запись с id = 6
+        //$model = Category::findOne(6);
+        //$model = Category::find()->where(['id' => 6])->all();
+
+        // вытаскиваем 3 первых записи
+        //$model = Category::find()->limit(3)->all();
+
+        //вытаскиваем 3 последних записи
+        //$model = Category::find()->orderBy('id DESC')->limit(3)->all();
+
+        return $this->render('index'/*, compact('model')*/);
     }
+
+
+
 
     /**
      * Login action.
@@ -83,15 +102,14 @@ class SiteController extends CustomController
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
         }
-
-        $model->password = '';
         return $this->render('login', [
             'model' => $model,
         ]);
     }
+
     public function actionRegistration()
     {
-        $this->setMeta('123');
+        $this->setMeta('Registration');
 
         $registration = new User();
 
@@ -126,6 +144,7 @@ class SiteController extends CustomController
         return $this->render('reglog', compact('registration'));
 
     }
+
 
     /**
      * Logout action.

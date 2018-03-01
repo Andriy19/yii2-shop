@@ -45,7 +45,7 @@ use yii\helpers\Url;
 <!--                            <p></p>-->
 <!--                            <input type="submit" name="submit" class="btn btn-default" value="Реєстрація" />-->
 <!--                        </form>-->
-<!--                    </div><!--/sign up form-->-->
+<!--                    </div><!--/sign up form-->
 
                 <br/>
                 <br/>

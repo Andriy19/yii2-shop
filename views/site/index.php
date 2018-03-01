@@ -84,7 +84,7 @@
             <div class="col-md-12">
                 <div class="latest-product">
                     <h2 class="section-title">Latest Products</h2>
-                    <div class="product-carousel">
+                    <div class="">
                         <div class="single-product">
                             <div class="product-f-image">
                                 <img src="img/product-1.jpg" alt="">
@@ -188,14 +188,14 @@
             <div class="col-md-12">
                 <div class="brand-wrapper">
                     <div class="brand-list">
-                        <img src="img/brand1.png" alt="">
-                        <img src="img/brand2.png" alt="">
-                        <img src="img/brand3.png" alt="">
-                        <img src="img/brand4.png" alt="">
-                        <img src="img/brand5.png" alt="">
-                        <img src="img/brand6.png" alt="">
-                        <img src="img/brand1.png" alt="">
-                        <img src="img/brand2.png" alt="">
+                        <img src="img/brand1.png" alt="brand1">
+                        <img src="img/brand2.png" alt="brand1">
+                        <img src="img/brand3.png" alt="brand1">
+                        <img src="img/brand4.png" alt="brand1">
+                        <img src="img/brand5.png" alt="brand1">
+                        <img src="img/brand6.png" alt="brand1">
+                        <img src="img/brand1.png" alt="brand1">
+                        <img src="img/brand2.png" alt="brand1">
                     </div>
                 </div>
             </div>
